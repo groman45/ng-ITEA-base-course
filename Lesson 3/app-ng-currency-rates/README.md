@@ -4,7 +4,8 @@
 * [Setup](#setup)
 
 ## General info
-This project is simple currency converter. This project was completed as a homework assignment for the Angular ITEA course lesson 2.
+This is simple ng project for testing pipes, *ngIf, *ngFor.
+This project was completed as a homework assignment for the Angular ITEA course lesson 3.
 	
 ## Technologies
 Project is created with:
