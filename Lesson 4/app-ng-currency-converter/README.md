@@ -4,12 +4,13 @@
 * [Setup](#setup)
 
 ## General info
-This project is simple currency converter. This project was completed as a homework assignment for the Angular ITEA course lesson 2.
+This project is simple currency converter. This project was completed as a homework assignment for the Angular ITEA course lesson 4.
 	
 ## Technologies
 Project is created with:
 * Angular version: 16.0
 * Bootstrap version: 5.3.1
+* rxjs 7.8.0
 
 	
 ## Setup
