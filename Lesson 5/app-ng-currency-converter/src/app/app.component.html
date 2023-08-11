@@ -1,0 +1,111 @@
+<section class="vh-100" style="background-color: #508bfc;">
+  <div class="container-lg py-3 h-100">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col-12 col-md-12 col-lg-12 col-xl-12">
+
+        <div class="card shadow-2-strong" style="border-radius: 1rem;">
+          <div class="card-body p-5 text-center">
+            <h2 class="mb-5">{{ title }}</h2>
+
+            
+
+           
+            <form [formGroup]="currencyExchangeForm">
+              <div class="container">
+                <div class="row">
+                  <div class="col" style="text-align: left;">
+                    <h5>Step 1: Select currency to convert</h5>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-5">
+                    <label class="form-label" for="Currency1">Currency #1</label>
+                  </div>
+                  <div class="col">
+                  </div>
+                  <div class="col-5">
+                    <label class="form-label" for="Currency2">Currency #2</label>
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="col-5">
+                    <select class="form-select" 
+                        *ngIf="currencyRates" formControlName="currencyCode1">
+                      <option *ngFor="let currency of currencyRates" [value]="currency.cc">
+                        {{ currency.cc + ' - ' + currency.txt }}
+                      </option>
+                    </select>
+                  </div>
+                  <div class="col">
+                    <input type="hidden" formControlName="letfToRight" >
+                    <h3>
+                      <i class="bi bi-arrow-left" *ngIf="(currencyExchangeForm && !currencyExchangeForm.controls['letfToRight'].value) else arrowRight"></i>
+                      <ng-template #arrowRight>
+                        <i class="bi bi-arrow-right" ></i>
+                      </ng-template>
+                      <label>*</label>
+                    </h3>
+                  </div>
+                  <div class="col-5">
+                    <select class="form-select" 
+                      *ngIf="currencyRates" formControlName="currencyCode2">
+                      <option *ngFor="let currency of currencyRates" [value]="currency.cc">
+                        {{ currency.cc + ' - ' + currency.txt }}
+                      </option>
+                    </select>
+                  </div>
+                </div>
+
+                <div class="row" style="padding-top:20px;">
+                  <div class="col" style="text-align: left;">
+                    <h5>Step 2: Enter amount</h5>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-5">
+                    <input type="text" class="form-control" formControlName="currencyAmount1">
+                    <div
+                      *ngIf="currencyExchangeForm && currencyExchangeForm.controls['currencyAmount1'].invalid && (currencyExchangeForm.controls['currencyAmount1'].dirty || currencyExchangeForm.controls['currencyAmount1'].touched)"
+                      class="invalid-feedback d-block">
+                      <div *ngIf="currencyExchangeForm && currencyExchangeForm.controls['currencyAmount1'].errors?.['required']">
+                        Is required.
+                      </div>
+                      <div *ngIf="currencyExchangeForm && currencyExchangeForm.controls['currencyAmount1'].errors?.['number']">
+                        Please, Enter number!
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col">
+                  </div>
+                  <div class="col-5">
+                    <input type="text" class="form-control" formControlName="currencyAmount2">
+                    <div
+                      *ngIf="currencyExchangeForm && currencyExchangeForm.controls['currencyAmount2'].invalid && (currencyExchangeForm.controls['currencyAmount2'].dirty || currencyExchangeForm.controls['currencyAmount2'].touched)"
+                      class="invalid-feedback d-block">
+                      <div *ngIf="currencyExchangeForm && currencyExchangeForm.controls['currencyAmount2'].errors?.['required']">
+                        Is required.
+                      </div>
+                      <div *ngIf="currencyExchangeForm && currencyExchangeForm.controls['currencyAmount2'].errors?.['number']">
+                        Please, Enter number!
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col" style="text-align: left; padding-top: 10px;">
+                    <label>* arrow direction depends from field where last amount was entered.
+                      If enter number to right field the arrow dirrection will change.
+                    </label>
+                  </div>
+                </div>
+              </div>
+            </form>
+
+              
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
